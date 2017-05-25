@@ -42,7 +42,7 @@ import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class FaceLoginActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     private final int REQUEST_PICTURE_CHOOSE = 1;
@@ -64,15 +64,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
         // 在程序入口处传入appid，初始化SDK
         SpeechUtility.createUtility(this, "appid=" + getString(R.string.app_id));
-        findViewById(R.id.online_pick).setOnClickListener(MainActivity.this);
-        findViewById(R.id.online_reg).setOnClickListener(MainActivity.this);
-        findViewById(R.id.online_verify).setOnClickListener(MainActivity.this);
-        findViewById(R.id.online_camera).setOnClickListener(MainActivity.this);
-        findViewById(R.id.online_detect).setOnClickListener(MainActivity.this);
-        findViewById(R.id.online_align).setOnClickListener(MainActivity.this);
+        findViewById(R.id.online_pick).setOnClickListener(FaceLoginActivity.this);
+        findViewById(R.id.online_reg).setOnClickListener(FaceLoginActivity.this);
+        findViewById(R.id.online_verify).setOnClickListener(FaceLoginActivity.this);
+        findViewById(R.id.online_camera).setOnClickListener(FaceLoginActivity.this);
+        findViewById(R.id.online_detect).setOnClickListener(FaceLoginActivity.this);
+        findViewById(R.id.online_align).setOnClickListener(FaceLoginActivity.this);
         mToast = Toast.makeText(this, "", Toast.LENGTH_SHORT);
 
         mProDialog = new ProgressDialog(this);
@@ -376,10 +376,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Bitmap bmp = data.getParcelableExtra("data");
             // 若返回数据不为null，保存至本地，防止裁剪时未能正常保存
             if(null != bmp){
-                FaceUtil.saveBitmapToFile(MainActivity.this, bmp);
+                FaceUtil.saveBitmapToFile(FaceLoginActivity.this, bmp);
             }
             // 获取图片保存路径
-            fileSrc = FaceUtil.getImagePath(MainActivity.this);
+            fileSrc = FaceUtil.getImagePath(FaceLoginActivity.this);
             // 获取图片的宽和高
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inJustDecodeBounds = true;
